@@ -232,3 +232,25 @@
 }
 
 
+.category-filter {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.category-filter button {
+    padding: 10px 20px;
+    border: 1px solid #a66b4e;
+    border-radius: 20px;
+    background: white;
+    color: #a66b4e;
+    cursor: pointer;
+}
+
+.category-filter button:hover,
+.category-filter button.active {
+    background: #a66b4e;
+    color: white;
+}

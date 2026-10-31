@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import ProductCard from '../components/common/ProductCard'
 
 function Products() {
+    const [selectedCategory, setSelectedCategory] = useState('Tất cả')
     const products = [
         {
             id: 1,
@@ -31,16 +33,34 @@ function Products() {
             category: 'Trang trí'
         }
     ]
+    const categories = ['Tất cả', 'Đồ len', 'Phụ kiện', 'Trang trí']
 
+    const filteredProducts =
+        selectedCategory === 'Tất cả'
+            ? products
+            : products.filter(
+                (product) => product.category === selectedCategory
+            )
     return (
         <div className="products-page">
             <div className="products-heading">
                 <h1>Sản phẩm handmade</h1>
                 <p>Khám phá những sản phẩm thủ công độc đáo</p>
             </div>
+            <div className="category-filter">
+                {categories.map((category) => (
+                    <button
+                        key={category}
+                        className={selectedCategory === category ? 'active' : ''}
+                        onClick={() => setSelectedCategory(category)}
+                    >
+                        {category}
+                    </button>
+                ))}
+            </div>
 
             <div className="products-list">
-                {products.map((product) => (
+                {filteredProducts.map((product) => (
                     <ProductCard
                         key={product.id}
                         name={product.name}
