@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import ProductCard from '../components/common/ProductCard'
-import { products } from '../data/products'
+import { products, type Product } from '../data/products'
 
 type ProductsProps = {
     searchText: string
+    onAddToCart: (product: Product) => void
 }
 
-function Products({ searchText }: ProductsProps) {
+function Products({ searchText, onAddToCart }: ProductsProps) {
     const [selectedCategory, setSelectedCategory] = useState('Tất cả')
     const [sortOrder, setSortOrder] = useState('default')
 
@@ -128,6 +129,7 @@ function Products({ searchText }: ProductsProps) {
                             category={product.category}
                             isFavorite={favoriteIds.includes(product.id)}
                             onToggleFavorite={() => toggleFavorite(product.id)}
+                            onAddToCart={() => onAddToCart(product)}
                         />
                     ))
                 ) : (

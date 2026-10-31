@@ -7,6 +7,7 @@ type ProductCardProps = {
     category: string
     isFavorite: boolean
     onToggleFavorite: () => void
+    onAddToCart: () => void
 }
 
 function ProductCard({
@@ -15,7 +16,8 @@ function ProductCard({
                          image,
                          category,
                          isFavorite,
-                         onToggleFavorite
+                         onToggleFavorite,
+                         onAddToCart
                      }: ProductCardProps) {
     return (
         <div className="product-card">
@@ -35,8 +37,12 @@ function ProductCard({
                 </p>
 
                 <div className="product-card-actions">
-                    <button type="button" className="product-button">
-                        Xem chi tiết
+                    <button
+                        type="button"
+                        className="product-button"
+                        onClick={onAddToCart}
+                    >
+                        Thêm vào giỏ
                     </button>
 
                     <FavoriteButton
