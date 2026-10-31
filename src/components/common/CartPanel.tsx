@@ -4,6 +4,7 @@ type CartPanelProps = {
     items: CartItem[]
     onUpdateQuantity: (id: number, quantity: number) => void
     onRemove: (id: number) => void
+    onCheckout: () => void
 }
 
 function formatPrice(price: number) {
@@ -13,7 +14,8 @@ function formatPrice(price: number) {
 function CartPanel({
                        items,
                        onUpdateQuantity,
-                       onRemove
+                       onRemove,
+                       onCheckout
                    }: CartPanelProps) {
     const totalPrice = items.reduce(
         (total, item) => total + item.price * item.quantity,
@@ -99,6 +101,14 @@ function CartPanel({
                     <p className="cart-total">
                         Tổng cộng: {formatPrice(totalPrice)}
                     </p>
+
+                    <button
+                        type="button"
+                        className="checkout-button"
+                        onClick={onCheckout}
+                    >
+                        Tiến hành đặt hàng
+                    </button>
                 </>
             )}
         </section>

@@ -3,12 +3,17 @@ import MainLayout from './components/layout/MainLayout'
 import HeroBanner from './components/layout/HeroBanner'
 import Products from './pages/Products'
 import CartPanel from './components/common/CartPanel'
+import CheckoutForm, {
+    type CheckoutInfo
+} from './components/common/CheckoutForm'
 import type { CartItem, Product } from './data/products'
 import './App.css'
 
 function App() {
     const [searchText, setSearchText] = useState('')
     const [cartItems, setCartItems] = useState<CartItem[]>([])
+    const [showCheckout, setShowCheckout] = useState(false)
+    const [orderMessage, setOrderMessage] = useState('')
 
     const addToCart = (product: Product) => {
         setCartItems((currentItems) => {
@@ -51,6 +56,14 @@ function App() {
         )
     }
 
+    const handleCheckout = (order: CheckoutInfo) => {
+        setOrderMessage(
+            `Cảm ơn ${order.name}! Thông tin đặt hàng đã được ghi nhận.`
+        )
+        setCartItems([])
+        setShowCheckout(false)
+    }
+
     const cartCount = cartItems.reduce(
         (total, item) => total + item.quantity,
         0
@@ -73,7 +86,21 @@ function App() {
                 items={cartItems}
                 onUpdateQuantity={updateQuantity}
                 onRemove={removeFromCart}
+                onCheckout={() => {
+                    setShowCheckout(true)
+                    setOrderMessage('')
+                }}
             />
+
+            {showCheckout && cartItems.length > 0 && (
+                <CheckoutForm onSubmit={handleCheckout} />
+            )}
+
+            {orderMessage && (
+                <p className="order-success">
+                    {orderMessage}
+                </p>
+            )}
         </MainLayout>
     )
 }
