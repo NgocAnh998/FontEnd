@@ -1,74 +1,103 @@
 import { useState } from 'react'
 import ProductCard from '../components/common/ProductCard'
+import { products } from '../data/products'
 
-function Products() {
+type ProductsProps = {
+    searchText: string
+}
+
+function Products({ searchText }: ProductsProps) {
     const [selectedCategory, setSelectedCategory] = useState('Tất cả')
-    const products = [
-        {
-            id: 1,
-            name: 'Gấu bông handmade',
-            price: '150.000đ',
-            image: '/images/teddy.jpg',
-            category: 'Đồ len'
-        },
-        {
-            id: 2,
-            name: 'Túi tote handmade',
-            price: '120.000đ',
-            image: '/images/tote.jpg',
-            category: 'Phụ kiện'
-        },
-        {
-            id: 3,
-            name: 'Hoa len handmade',
-            price: '80.000đ',
-            image: '/images/flower.jpg',
-            category: 'Đồ len'
-        },
-        {
-            id: 4,
-            name: 'Nến thơm handmade',
-            price: '100.000đ',
-            image: '/images/candle.jpg',
-            category: 'Trang trí'
-        }
-    ]
-    const categories = ['Tất cả', 'Đồ len', 'Phụ kiện', 'Trang trí']
+    const [sortOrder, setSortOrder] = useState('default')
 
-    const filteredProducts =
-        selectedCategory === 'Tất cả'
-            ? products
-            : products.filter(
-                (product) => product.category === selectedCategory
-            )
+    const categories = [
+        'Tất cả',
+        'Đồ len',
+        'Phụ kiện',
+        'Trang trí',
+        'Trang sức',
+        'Quà tặng'
+    ]
+
+    const normalizedSearch = searchText.trim().toLowerCase()
+
+    const filteredProducts = products
+        .filter((product) => {
+            const matchesCategory =
+                selectedCategory === 'Tất cả' ||
+                product.category === selectedCategory
+
+            const matchesSearch =
+                product.name.toLowerCase().includes(normalizedSearch) ||
+                product.category.toLowerCase().includes(normalizedSearch) ||
+                product.description.toLowerCase().includes(normalizedSearch)
+
+            return matchesCategory && matchesSearch
+        })
+        .sort((a, b) => {
+            if (sortOrder === 'price-asc') {
+                return a.price - b.price
+            }
+
+            if (sortOrder === 'price-desc') {
+                return b.price - a.price
+            }
+
+            return 0
+        })
+
     return (
-        <div className="products-page">
+        <div className="products-page" id="products">
             <div className="products-heading">
                 <h1>Sản phẩm handmade</h1>
                 <p>Khám phá những sản phẩm thủ công độc đáo</p>
             </div>
-            <div className="category-filter">
-                {categories.map((category) => (
-                    <button
-                        key={category}
-                        className={selectedCategory === category ? 'active' : ''}
-                        onClick={() => setSelectedCategory(category)}
+
+            <div className="products-controls">
+                <div className="category-filter">
+                    {categories.map((category) => (
+                        <button
+                            type="button"
+                            key={category}
+                            className={
+                                selectedCategory === category ? 'active' : ''
+                            }
+                            onClick={() => setSelectedCategory(category)}
+                        >
+                            {category}
+                        </button>
+                    ))}
+                </div>
+
+                <label className="sort-control">
+                    Sắp xếp giá
+                    <select
+                        value={sortOrder}
+                        onChange={(event) => setSortOrder(event.target.value)}
                     >
-                        {category}
-                    </button>
-                ))}
+                        <option value="default">Mặc định</option>
+                        <option value="price-asc">Giá tăng dần</option>
+                        <option value="price-desc">Giá giảm dần</option>
+                    </select>
+                </label>
             </div>
 
             <div className="products-list">
-                {filteredProducts.map((product) => (
-                    <ProductCard
-                        key={product.id}
-                        name={product.name}
-                        price={product.price}
-                        image={product.image}
-                        category={product.category}
-                    />
-                ))}
+                {filteredProducts.length > 0 ? (
+                    filteredProducts.map((product) => (
+                        <ProductCard
+                            key={product.id}
+                            name={product.name}
+                            price={product.price}
+                            image={product.image}
+                            category={product.category}
+                        />
+                    ))
+                ) : (
+                    <p className="empty-products">
+                        Không tìm thấy sản phẩm phù hợp.
+                    </p>
+                )}
             </div>
         </div>
     )

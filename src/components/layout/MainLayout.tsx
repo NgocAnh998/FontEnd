@@ -4,12 +4,21 @@ import Footer from './Footer'
 
 type MainLayoutProps = {
     children: ReactNode
+    searchText: string
+    onSearchChange: (value: string) => void
 }
 
-function MainLayout({ children }: MainLayoutProps) {
+function MainLayout({
+                        children,
+                        searchText,
+                        onSearchChange
+                    }: MainLayoutProps) {
     return (
         <div>
-            <Header />
+            <Header
+                searchText={searchText}
+                onSearchChange={onSearchChange}
+            />
 
             <main className="main-content">
                 {children}
