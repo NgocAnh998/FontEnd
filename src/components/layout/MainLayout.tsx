@@ -6,18 +6,21 @@ type MainLayoutProps = {
     children: ReactNode
     searchText: string
     onSearchChange: (value: string) => void
+    cartCount: number
 }
 
 function MainLayout({
                         children,
                         searchText,
-                        onSearchChange
+                        onSearchChange,
+                        cartCount
                     }: MainLayoutProps) {
     return (
         <div>
             <Header
                 searchText={searchText}
                 onSearchChange={onSearchChange}
+                cartCount={cartCount}
             />
 
             <main className="main-content">

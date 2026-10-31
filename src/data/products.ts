@@ -73,3 +73,6 @@ export const products: Product[] = [
         description: 'Hộp quà dành cho những dịp đặc biệt.'
     }
 ]
+export type CartItem = Product & {
+    quantity: number
+}
