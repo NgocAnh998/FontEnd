@@ -42,7 +42,7 @@ function Products() {
                 (product) => product.category === selectedCategory
             )
     return (
-        <div className="products-page">
+        <div className="products-page" id="products">
             <div className="products-heading">
                 <h1>Sản phẩm handmade</h1>
                 <p>Khám phá những sản phẩm thủ công độc đáo</p>
