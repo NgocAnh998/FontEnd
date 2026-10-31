@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ProductCard from '../components/common/ProductCard'
 import { products } from '../data/products'
 
@@ -10,6 +10,20 @@ function Products({ searchText }: ProductsProps) {
     const [selectedCategory, setSelectedCategory] = useState('Tất cả')
     const [sortOrder, setSortOrder] = useState('default')
 
+    const [favoriteIds, setFavoriteIds] = useState<number[]>(() => {
+        const savedFavorites = localStorage.getItem('handmadeFavorites')
+
+        if (!savedFavorites) {
+            return []
+        }
+
+        try {
+            return JSON.parse(savedFavorites) as number[]
+        } catch {
+            return []
+        }
+    })
+
     const categories = [
         'Tất cả',
         'Đồ len',
@@ -18,6 +32,23 @@ function Products({ searchText }: ProductsProps) {
         'Trang sức',
         'Quà tặng'
     ]
+
+    useEffect(() => {
+        localStorage.setItem(
+            'handmadeFavorites',
+            JSON.stringify(favoriteIds)
+        )
+    }, [favoriteIds])
+
+    const toggleFavorite = (productId: number) => {
+        setFavoriteIds((currentIds) => {
+            if (currentIds.includes(productId)) {
+                return currentIds.filter((id) => id !== productId)
+            }
+
+            return [...currentIds, productId]
+        })
+    }
 
     const normalizedSearch = searchText.trim().toLowerCase()
 
@@ -52,6 +83,10 @@ function Products({ searchText }: ProductsProps) {
                 <h1>Sản phẩm handmade</h1>
                 <p>Khám phá những sản phẩm thủ công độc đáo</p>
             </div>
+
+            <p className="favorites-summary">
+                Bạn đã yêu thích {favoriteIds.length} sản phẩm
+            </p>
 
             <div className="products-controls">
                 <div className="category-filter">
@@ -91,6 +126,8 @@ function Products({ searchText }: ProductsProps) {
                             price={product.price}
                             image={product.image}
                             category={product.category}
+                            isFavorite={favoriteIds.includes(product.id)}
+                            onToggleFavorite={() => toggleFavorite(product.id)}
                         />
                     ))
                 ) : (
