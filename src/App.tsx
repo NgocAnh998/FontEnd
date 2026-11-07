@@ -1,15 +1,8 @@
-import { useState } from 'react'
-import MainLayout from './components/layout/MainLayout'
-import Products from './pages/Products'
+import AppRouter from './routes/AppRouter'
 import './App.css'
 
 function App() {
-    const [] = useState('')
-    return (
-        <MainLayout >
-            <Products/>
-        </MainLayout>
-    )
+    return <AppRouter />
 }
 
 export default App
