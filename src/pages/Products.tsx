@@ -41,7 +41,9 @@ function Products() {
             })
         )
     }
-
+    function removeFromCart(id: number) {
+        setCart(cart.filter((item) => item.id !== id))
+    }
     return (
         <div className="products-page" id="products">
             <div className="products-heading">
@@ -78,7 +80,9 @@ function Products() {
 
                 <div className="cart-items">
                     {cart.length === 0 ? (<p className="empty-cart">Giỏ hàng đang trống</p>) : (cart.map((item) => (
-                        <CartItem key={item.id} item={item} onIncrease={(id) => changeQuantity(id, 1)} onDecrease={(id) => changeQuantity(id, -1)}/>)))}
+                        <CartItem key={item.id} item={item} onIncrease={(id) => changeQuantity(id, 1)}
+                            onDecrease={(id) => changeQuantity(id, -1)} onRemove={removeFromCart}/>
+                    )))}
                 </div>
                 <CartSummary items={cart} />
             </div>
