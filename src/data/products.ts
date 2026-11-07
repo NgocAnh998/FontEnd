@@ -1,4 +1,4 @@
-export type Product = {
+export interface Product {
     id: number
     name: string
     price: number
@@ -6,7 +6,6 @@ export type Product = {
     category: string
     description: string
 }
-
 export const products: Product[] = [
     {
         id: 1,
@@ -73,6 +72,6 @@ export const products: Product[] = [
         description: 'Hộp quà dành cho những dịp đặc biệt.'
     }
 ]
-export type CartItem = Product & {
+export interface CartItem extends Product {
     quantity: number
 }
