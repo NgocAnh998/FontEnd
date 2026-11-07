@@ -1,0 +1,181 @@
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    padding: 16px;
+}
+
+.modal-box {
+    background: #fffdf9;
+    border-radius: 12px;
+    max-width: 760px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 24px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: #5c4b3c;
+}
+
+.modal-product-main {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.modal-product-img img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.img-placeholder {
+    width: 100%;
+    height: 280px;
+    background: #eee4d7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: #7d6652;
+}
+
+.modal-category {
+    font-size: 13px;
+    color: #8c6d46;
+    text-transform: uppercase;
+}
+
+.modal-product-info h2 {
+    margin: 6px 0 10px;
+    color: #3d3024;
+}
+
+.modal-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #b45309;
+    margin-bottom: 12px;
+}
+
+.modal-desc {
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 14px;
+}
+
+.handmade-specs {
+    background: #f6efe6;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.modal-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.qty-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d6c7b2;
+    border-radius: 6px;
+}
+
+.qty-control button {
+    background: none;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.qty-control span {
+    padding: 0 10px;
+    font-weight: 600;
+}
+
+.btn-buy-modal {
+    background: #8c5a32;
+    color: #fff;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.modal-reviews-section {
+    border-top: 1px solid #e5dccb;
+    padding-top: 18px;
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 12px 0 18px;
+}
+
+.review-form input,
+.review-form select,
+.review-form textarea {
+    padding: 8px 10px;
+    border: 1px solid #d6c7b2;
+    border-radius: 6px;
+    font-family: inherit;
+}
+
+.review-form button {
+    align-self: flex-start;
+    background: #5c4b3c;
+    color: white;
+    border: none;
+    padding: 7px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.review-item {
+    border-bottom: 1px solid #efe8dc;
+    padding: 10px 0;
+}
+
+.review-header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.review-header span {
+    color: #d97706;
+}
+
+@media (max-width: 640px) {
+    .modal-product-main {
+        grid-template-columns: 1fr;
+    }
+}
