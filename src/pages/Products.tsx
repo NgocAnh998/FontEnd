@@ -118,7 +118,7 @@ function Products({ searchText, onAddToCart }: ProductsProps) {
                 </label>
             </div>
 
-            <div className="products-list">
+            {/*<div className="products-list">
                 {filteredProducts.length > 0 ? (
                     filteredProducts.map((product) => (
                         <ProductCard
@@ -137,7 +137,7 @@ function Products({ searchText, onAddToCart }: ProductsProps) {
                         Không tìm thấy sản phẩm phù hợp.
                     </p>
                 )}
-            </div>
+            </div>*/}
         </div>
     )
 }
