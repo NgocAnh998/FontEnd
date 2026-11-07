@@ -1,6 +1,12 @@
-import type { Product } from '../types/product'
-
-export const PRODUCTS_DATA: Product[] = [
+export interface Product {
+    id: number
+    name: string
+    price: number
+    image: string
+    category: string
+    description: string
+}
+export const products: Product[] = [
     {
         id: 'p1',
         name: 'Túi Xách Len Handmade Móc Tay Vintage',
@@ -77,3 +83,6 @@ export const PRODUCTS_DATA: Product[] = [
         inStock: true
     }
 ]
+export interface CartItem extends Product {
+    quantity: number
+}
