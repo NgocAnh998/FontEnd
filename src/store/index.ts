@@ -1,16 +1,18 @@
+
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import { persistReducer, persistStore } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+
+import storage from './storage'
 import uiReducer from './uiSlice'
 
 const rootReducer = combineReducers({
-    ui: uiReducer
+    ui: uiReducer,
 })
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['ui']
+    whitelist: ['ui'],
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
@@ -19,8 +21,8 @@ export const store = configureStore({
     reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
-            serializableCheck: false
-        })
+            serializableCheck: false,
+        }),
 })
 
 export const persistor = persistStore(store)

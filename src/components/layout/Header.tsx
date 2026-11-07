@@ -7,7 +7,11 @@ function Header() {
                 <nav className="menu">
                     <NavLink to="/">Trang chủ</NavLink>
                     <NavLink to="/products">Sản phẩm</NavLink>
-                    <NavLink to="/custom-order">Đặt làm theo yêu cầu</NavLink>
+                    <NavLink to="/custom-order">Đặt hàng theo yêu cầu</NavLink>
+                    <NavLink to="/about">Giới thiệu</NavLink>
+                    <NavLink to="/contact">Liên hệ</NavLink>
+                    <NavLink to="/faq">FAQ</NavLink>
+                    <NavLink to="/policy">Chính sách</NavLink>
                 </nav>
 
                 <div className="header-right">
