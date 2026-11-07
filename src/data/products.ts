@@ -1,10 +1,15 @@
 export interface Product {
-    id: number
+    id: string
     name: string
     price: number
+    originalPrice?: number
     image: string
     category: string
     description: string
+    rating?: number
+    soldCount?: number
+    materials?: string[]
+    inStock: boolean
 }
 export const products: Product[] = [
     {
