@@ -1,13 +1,13 @@
-import type { ReactNode } from 'react'
+import { Outlet } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
 
-function MainLayout({ children }: { children: ReactNode }) {
+function MainLayout() {
     return (
-        <div>
+        <div className="app-layout">
             <Header />
             <main className="main-content">
-                {children}
+                <Outlet />
             </main>
             <Footer />
         </div>
