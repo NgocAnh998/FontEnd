@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { products, type Product, type CartItem as CartProduct } from '../data/products'
 import CartItem from '../components/CartItem'
+import CartSummary from '../components/CartSummary'
 
 function Products() {
     const [selectedCategory, setSelectedCategory] = useState('Tất cả')
@@ -66,6 +67,7 @@ function Products() {
                 <div className="cart-items">
                     {cart.length === 0 ? (<p className="empty-cart">Giỏ hàng đang trống</p>) : (cart.map((item) => (<CartItem key={item.id} item={item}/>)))}
                 </div>
+                <CartSummary items={cart} />
             </div>
         </div>
     )
