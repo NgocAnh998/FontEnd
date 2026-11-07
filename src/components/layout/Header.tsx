@@ -1,16 +1,5 @@
-import SearchBar from '../common/SearchBar'
 
-type HeaderProps = {
-    searchText: string
-    onSearchChange: (value: string) => void
-    cartCount: number
-}
-
-function Header({
-                    searchText,
-                    onSearchChange,
-                    cartCount
-                }: HeaderProps) {
+function Header() {
     return (
         <header className="header">
             <div className="header-container">
@@ -24,12 +13,8 @@ function Header({
                 </nav>
 
                 <div className="header-right">
-                    <SearchBar
-                        value={searchText}
-                        onChange={onSearchChange}
-                    />
                     <a href="#">Đăng nhập</a>
-                    <a href="#cart">Giỏ hàng ({cartCount})</a>
+                    <a href="#cart">Giỏ hàng </a>
                 </div>
             </div>
         </header>

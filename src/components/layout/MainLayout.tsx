@@ -2,31 +2,13 @@ import type { ReactNode } from 'react'
 import Header from './Header'
 import Footer from './Footer'
 
-type MainLayoutProps = {
-    children: ReactNode
-    searchText: string
-    onSearchChange: (value: string) => void
-    cartCount: number
-}
-
-function MainLayout({
-                        children,
-                        searchText,
-                        onSearchChange,
-                        cartCount
-                    }: MainLayoutProps) {
+function MainLayout({ children }: { children: ReactNode }) {
     return (
         <div>
-            <Header
-                searchText={searchText}
-                onSearchChange={onSearchChange}
-                cartCount={cartCount}
-            />
-
+            <Header />
             <main className="main-content">
                 {children}
             </main>
-
             <Footer />
         </div>
     )
