@@ -8,68 +8,79 @@ export interface Product {
 }
 export const products: Product[] = [
     {
-        id: 1,
-        name: 'Gấu bông handmade',
-        price: 150000,
-        image: '/images/teddy.jpg',
-        category: 'Đồ len',
-        description: 'Gấu bông len được làm thủ công.'
+        id: 'p1',
+        name: 'Túi Xách Len Handmade Móc Tay Vintage',
+        category: 'Phụ kiện',
+        price: 350000,
+        originalPrice: 420000,
+        image: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=500&auto=format&fit=crop&q=60',
+        rating: 4.8,
+        soldCount: 45,
+        description: 'Túi xách làm từ sợi cotton tự nhiên, đan móc thủ công tỉ mỉ từng đường kim mũi chỉ, phù hợp phong cách vintage.',
+        materials: ['Sợi cotton', 'Khóa nam châm da'],
+        inStock: true
     },
     {
-        id: 2,
-        name: 'Túi tote handmade',
+        id: 'p2',
+        name: 'Gấu Bông Len Amigurumi Móc Khóa',
+        category: 'Đồ chơi',
         price: 120000,
-        image: '/images/tote.jpg',
-        category: 'Phụ kiện',
-        description: 'Túi vải phù hợp cho việc đi học và đi chơi.'
+        image: 'https://images.unsplash.com/photo-1563089145-599997674d42?w=500&auto=format&fit=crop&q=60',
+        rating: 4.9,
+        soldCount: 120,
+        description: 'Móc khóa gấu bông nhỏ xinh móc thủ công dùng làm quà tặng hoặc treo cặp sách.',
+        materials: ['LenMilk Cotton', 'Bông gòn bi'],
+        inStock: true
     },
     {
-        id: 3,
-        name: 'Hoa len handmade',
-        price: 80000,
-        image: '/images/flower.jpg',
-        category: 'Đồ len',
-        description: 'Bó hoa len nhỏ thích hợp làm quà tặng.'
+        id: 'p3',
+        name: 'Cốc Gốm Sứ Thủ Công Vẽ Hoa Nổi',
+        category: 'Đồ gốm',
+        price: 220000,
+        originalPrice: 250000,
+        image: 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=500&auto=format&fit=crop&q=60',
+        rating: 4.7,
+        soldCount: 30,
+        description: 'Cốc gốm nung nhiệt độ cao an toàn sức khỏe, họa tiết hoa vẽ tay hoàn toàn thủ công.',
+        materials: ['Đất sét trắng', 'Men gốm tự nhiên'],
+        inStock: true
     },
     {
-        id: 4,
-        name: 'Nến thơm handmade',
-        price: 100000,
-        image: '/images/candle.jpg',
-        category: 'Trang trí',
-        description: 'Nến trang trí cho không gian sống.'
-    },
-    {
-        id: 5,
-        name: 'Vòng tay thủ công',
-        price: 65000,
-        image: '/images/bracelet.jpg',
+        id: 'p4',
+        name: 'Vòng Tay Macrame Đính Đá Phong Thủy',
         category: 'Trang sức',
-        description: 'Vòng tay đơn giản dành cho người yêu thích handmade.'
+        price: 85000,
+        image: 'https://images.unsplash.com/photo-1611591475754-d87214736f1b?w=500&auto=format&fit=crop&q=60',
+        rating: 4.6,
+        soldCount: 88,
+        description: 'Vòng tay đan dây macrame kết hợp đá thạch anh tự nhiên mang lại bình an.',
+        materials: ['Dây sáp', 'Đá thạch anh'],
+        inStock: false
     },
     {
-        id: 6,
-        name: 'Móc khóa len',
-        price: 45000,
-        image: '/images/keychain.jpg',
-        category: 'Phụ kiện',
-        description: 'Móc khóa nhỏ có thể dùng để trang trí balo.'
-    },
-    {
-        id: 7,
-        name: 'Sổ tay trang trí',
-        price: 75000,
-        image: '/images/notebook.jpg',
-        category: 'Quà tặng',
-        description: 'Sổ tay thích hợp để ghi chép hằng ngày.'
-    },
-    {
-        id: 8,
-        name: 'Hộp quà handmade',
+        id: 'p5',
+        name: 'Nến Thơm Tinh Dầu Thiên Nhiên Hoa Hồng',
+        category: 'Trang trí',
         price: 180000,
-        image: '/images/giftbox.jpg',
-        category: 'Quà tặng',
-        description: 'Hộp quà dành cho những dịp đặc biệt.'
+        image: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?w=500&auto=format&fit=crop&q=60',
+        rating: 5.0,
+        soldCount: 64,
+        description: 'Nến làm từ sáp đậu nành an toàn, hương thơm tinh dầu hoa hồng dịu nhẹ giúp thư giãn.',
+        materials: ['Sáp đậu nành', 'Tinh dầu thiên nhiên', 'Bấc gỗ'],
+        inStock: true
+    },
+    {
+        id: 'p6',
+        name: 'Khăn Choàng Cổ Len Dệt Kim Tay',
+        category: 'Phụ kiện',
+        price: 290000,
+        originalPrice: 350000,
+        image: 'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=500&auto=format&fit=crop&q=60',
+        rating: 4.8,
+        soldCount: 19,
+        description: 'Khăn choàng dày dặn, ấm áp, chất liệu len mềm mại không gây kích ứng da.',
+        materials: ['Len lông cừu tổng hợp'],
+        inStock: true
     }
 ]
 export interface CartItem extends Product {

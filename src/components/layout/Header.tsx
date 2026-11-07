@@ -1,35 +1,22 @@
-import SearchBar from '../common/SearchBar'
-
-type HeaderProps = {
-    searchText: string
-    onSearchChange: (value: string) => void
-    cartCount: number
-}
-
-function Header({
-                    searchText,
-                    onSearchChange,
-                    cartCount
-                }: HeaderProps) {
+import { NavLink } from 'react-router-dom'
+function Header() {
     return (
         <header className="header">
             <div className="header-container">
-                <h2 className="logo">Handmade</h2>
-
+                <NavLink className="logo" to="/">Handmade</NavLink>
                 <nav className="menu">
-                    <a href="#">Trang chủ</a>
-                    <a href="#products">Sản phẩm</a>
-                    <a href="#products">Danh mục</a>
-                    <a href="#footer">Giới thiệu</a>
+                    <NavLink to="/">Trang chủ</NavLink>
+                    <NavLink to="/products">Sản phẩm</NavLink>
+                    <NavLink to="/custom-order">Đặt hàng theo yêu cầu</NavLink>
+                    <NavLink to="/about">Giới thiệu</NavLink>
+                    <NavLink to="/contact">Liên hệ</NavLink>
+                    <NavLink to="/faq">FAQ</NavLink>
+                    <NavLink to="/policy">Chính sách</NavLink>
                 </nav>
 
                 <div className="header-right">
-                    <SearchBar
-                        value={searchText}
-                        onChange={onSearchChange}
-                    />
-                    <a href="#">Đăng nhập</a>
-                    <a href="#cart">Giỏ hàng ({cartCount})</a>
+                    <a href="#footer">Liên hệ</a>
+                    <a href="#cart">Giỏ hàng</a>
                 </div>
             </div>
         </header>
