@@ -1,20 +1,18 @@
+import { NavLink } from 'react-router-dom'
 
 function Header() {
     return (
         <header className="header">
             <div className="header-container">
-                <h2 className="logo">Handmade</h2>
-
+                <NavLink className="logo" to="/">Handmade</NavLink>
                 <nav className="menu">
-                    <a href="#">Trang chủ</a>
-                    <a href="#products">Sản phẩm</a>
-                    <a href="#products">Danh mục</a>
-                    <a href="#footer">Giới thiệu</a>
+                    <NavLink to="/">Trang chủ</NavLink>
+                    <NavLink to="/products">Sản phẩm</NavLink>
+                    <NavLink to="/custom-order">Đặt làm theo yêu cầu</NavLink>
                 </nav>
-
                 <div className="header-right">
-                    <a href="#">Đăng nhập</a>
-                    <a href="#cart">Giỏ hàng </a>
+                    <a href="#footer">Liên hệ</a>
+                    <a href="#cart">Giỏ hàng</a>
                 </div>
             </div>
         </header>

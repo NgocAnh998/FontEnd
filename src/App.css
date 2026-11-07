@@ -710,3 +710,23 @@ body {
         gap: 8px;
     }
 }
+
+/* Layout chung */
+.logo {
+    text-decoration: none;
+}
+
+.menu a.active {
+    color: #a66a3f;
+    font-weight: bold;
+}
+
+.app-layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-layout .main-content {
+    flex: 1;
+}
