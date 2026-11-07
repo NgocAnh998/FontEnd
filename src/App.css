@@ -673,3 +673,40 @@ body {
         width: 100%;
     }
 }
+.order-preview {
+    margin-top: 25px;
+    padding: 20px;
+    background: white;
+    border: 1px solid #eaded4;
+    border-radius: 8px;
+}
+
+.order-preview h3 {
+    margin: 0 0 15px;
+    color: #754b30;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.order-item span:last-child {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+    .order-preview {
+        padding: 14px;
+    }
+
+    .order-item {
+        font-size: 13px;
+        gap: 8px;
+    }
+}
