@@ -1,8 +1,8 @@
 import type { CartItem as CartProduct } from '../data/products'
 
-type Props = { item: CartProduct }
+type Props = { item: CartProduct; onIncrease: (id: number) => void; onDecrease: (id: number) => void }
 
-function CartItem({ item }: Props) {
+function CartItem({ item, onIncrease, onDecrease }: Props) {
     return (
         <div className="cart-item">
             <img className="cart-image" src={item.image} alt={item.name}/>
@@ -10,7 +10,12 @@ function CartItem({ item }: Props) {
             <div className="cart-item-info">
                 <h3>{item.name}</h3>
                 <p>{item.price.toLocaleString('vi-VN')} đ</p>
-                <p>Số lượng: {item.quantity}</p>
+
+                <div className="cart-quantity">
+                    <button type="button" onClick={() => onDecrease(item.id)}>-</button>
+                    <span>{item.quantity}</span>
+                    <button type="button" onClick={() => onIncrease(item.id)}>+</button>
+                </div>
             </div>
 
             <div className="cart-item-end">

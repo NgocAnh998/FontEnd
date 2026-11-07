@@ -29,6 +29,18 @@ function Products() {
             setCart([...cart, {...product, quantity: 1}])
         }
     }
+    function changeQuantity(id: number, amount: number) {
+        setCart(cart.map((item) => {
+                if (item.id === id) {
+                    if (item.quantity + amount < 1) {
+                        return item
+                    }
+                    return {...item, quantity: item.quantity + amount}
+                }
+                return item
+            })
+        )
+    }
 
     return (
         <div className="products-page" id="products">
@@ -65,7 +77,8 @@ function Products() {
                 <h2>Giỏ hàng của bạn</h2>
 
                 <div className="cart-items">
-                    {cart.length === 0 ? (<p className="empty-cart">Giỏ hàng đang trống</p>) : (cart.map((item) => (<CartItem key={item.id} item={item}/>)))}
+                    {cart.length === 0 ? (<p className="empty-cart">Giỏ hàng đang trống</p>) : (cart.map((item) => (
+                        <CartItem key={item.id} item={item} onIncrease={(id) => changeQuantity(id, 1)} onDecrease={(id) => changeQuantity(id, -1)}/>)))}
                 </div>
                 <CartSummary items={cart} />
             </div>
