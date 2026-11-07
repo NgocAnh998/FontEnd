@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react'
 import ProductCard from '../components/common/ProductCard'
 import { products, type Product } from '../data/products'
@@ -11,7 +12,8 @@ function Products({ searchText, onAddToCart }: ProductsProps) {
     const [selectedCategory, setSelectedCategory] = useState('Tất cả')
     const [sortOrder, setSortOrder] = useState('default')
 
-    const [favoriteIds, setFavoriteIds] = useState<number[]>(() => {
+    // Lấy danh sách ID sản phẩm yêu thích từ localStorage
+    const [favoriteIds, setFavoriteIds] = useState<string[]>(() => {
         const savedFavorites = localStorage.getItem('handmadeFavorites')
 
         if (!savedFavorites) {
@@ -19,21 +21,19 @@ function Products({ searchText, onAddToCart }: ProductsProps) {
         }
 
         try {
-            return JSON.parse(savedFavorites) as number[]
+            return JSON.parse(savedFavorites) as string[]
         } catch {
             return []
         }
     })
 
+    // Tự động lấy danh mục từ dữ liệu sản phẩm
     const categories = [
         'Tất cả',
-        'Đồ len',
-        'Phụ kiện',
-        'Trang trí',
-        'Trang sức',
-        'Quà tặng'
+        ...new Set(products.map((product) => product.category))
     ]
 
+    // Lưu danh sách yêu thích vào localStorage
     useEffect(() => {
         localStorage.setItem(
             'handmadeFavorites',
@@ -41,7 +41,8 @@ function Products({ searchText, onAddToCart }: ProductsProps) {
         )
     }, [favoriteIds])
 
-    const toggleFavorite = (productId: number) => {
+    // Thêm hoặc xóa sản phẩm khỏi danh sách yêu thích
+    const toggleFavorite = (productId: string) => {
         setFavoriteIds((currentIds) => {
             if (currentIds.includes(productId)) {
                 return currentIds.filter((id) => id !== productId)
@@ -51,8 +52,10 @@ function Products({ searchText, onAddToCart }: ProductsProps) {
         })
     }
 
+    // Chuẩn hóa nội dung tìm kiếm
     const normalizedSearch = searchText.trim().toLowerCase()
 
+    // Lọc và sắp xếp sản phẩm
     const filteredProducts = products
         .filter((product) => {
             const matchesCategory =
