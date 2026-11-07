@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { products, type CartItem as CartProduct } from '../data/products'
+import { products, type Product, type CartItem as CartProduct } from '../data/products'
 import CartItem from '../components/CartItem'
 
 function Products() {
@@ -14,6 +14,20 @@ function Products() {
         }
         return product.category === selectedCategory
     })
+    function addToCart(product: Product) {
+        const oldProduct = cart.find((item) => item.id === product.id)
+        if (oldProduct) {
+            setCart(cart.map((item) => {
+                    if (item.id === product.id) {
+                        return {...item, quantity: item.quantity + 1}
+                    }
+                    return item
+                })
+            )
+        } else {
+            setCart([...cart, {...product, quantity: 1}])
+        }
+    }
 
     return (
         <div className="products-page" id="products">
@@ -40,6 +54,7 @@ function Products() {
                             <span className="product-category">{product.category}</span>
                             <h3 className="product-name">{product.name}</h3>
                             <p className="product-price">{product.price.toLocaleString('vi-VN')} đ</p>
+                            <button className="product-button" type="button" onClick={() => addToCart(product)}>Thêm vào giỏ</button>
                         </div>
                     </div>
                 ))}
