@@ -413,3 +413,263 @@
         font-size: 24px;
     }
 }
+
+/* About and Contact pages */
+
+.info-hero {
+    padding: 65px 20px;
+    text-align: center;
+    background: #f8eee5;
+    border-radius: 12px;
+}
+
+.info-hero h1 {
+    margin: 0 0 15px;
+    color: #44352e;
+    font-size: clamp(30px, 5vw, 42px);
+}
+
+.info-hero p {
+    max-width: 650px;
+    margin: 0 auto;
+    color: #81746c;
+    line-height: 1.8;
+}
+
+.info-section {
+    padding: 65px 5%;
+}
+
+.about-introduction {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 55px;
+}
+
+.about-image {
+    min-height: 330px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f0e1d5;
+    border-radius: 12px;
+}
+
+.about-image span {
+    font-size: 110px;
+}
+
+.about-image p {
+    color: #8b6049;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.info-content h2,
+.contact-information h2 {
+    margin: 0 0 18px;
+    color: #44352e;
+    font-size: 30px;
+    line-height: 1.4;
+}
+
+.info-content p,
+.contact-information > p {
+    color: #81746c;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.info-heading {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.info-heading h2 {
+    margin: 0;
+    color: #44352e;
+    font-size: 30px;
+}
+
+.about-value-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.about-value-card {
+    padding: 30px 22px;
+    text-align: center;
+    background: #faf6f2;
+    border: 1px solid #f0e8e1;
+    border-radius: 10px;
+}
+
+.about-value-card > div {
+    font-size: 38px;
+}
+
+.about-value-card h3 {
+    color: #493a32;
+}
+
+.about-value-card p {
+    color: #81746c;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.info-bottom {
+    padding: 50px 20px;
+    text-align: center;
+    background: #f8eee5;
+    border-radius: 12px;
+}
+
+.info-bottom h2 {
+    color: #493a32;
+    font-size: 28px;
+}
+
+.info-bottom p {
+    margin-bottom: 25px;
+    color: #81746c;
+}
+
+.contact-section {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 55px;
+    padding: 65px 5%;
+}
+
+.contact-information > p {
+    margin-bottom: 30px;
+}
+
+.contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.contact-detail > span {
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5e9df;
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+.contact-detail h3 {
+    margin: 0 0 5px;
+    color: #493a32;
+    font-size: 16px;
+}
+
+.contact-detail p {
+    margin: 0;
+    color: #81746c;
+    font-size: 14px;
+}
+
+.contact-form-wrapper {
+    padding: 30px;
+    background: #faf6f2;
+    border: 1px solid #f0e8e1;
+    border-radius: 12px;
+}
+
+.contact-form-wrapper h2 {
+    margin: 0 0 25px;
+    color: #44352e;
+    font-size: 24px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.contact-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-form-group label {
+    color: #493a32;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.contact-form-group input,
+.contact-form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    color: #493a32;
+    background: white;
+    border: 1px solid #e5d9cf;
+    border-radius: 6px;
+    font: inherit;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.contact-form-group input:focus,
+.contact-form-group textarea:focus {
+    border-color: #a66d50;
+}
+
+.contact-form-group textarea {
+    resize: vertical;
+}
+
+.contact-form button {
+    align-self: flex-start;
+    border: none;
+    cursor: pointer;
+}
+
+.contact-success {
+    margin-bottom: 18px;
+    padding: 13px;
+    color: #356b45;
+    background: #e8f4e9;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .about-introduction,
+    .contact-section {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .about-value-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-section {
+        padding: 45px 15px;
+    }
+
+    .contact-section {
+        padding: 45px 15px;
+    }
+
+    .contact-form-wrapper {
+        padding: 22px 17px;
+    }
+}
