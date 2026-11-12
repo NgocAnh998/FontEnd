@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 
 function Header() {
 
@@ -5,11 +6,10 @@ function Header() {
         <>
             <nav className="navbar navbar-dark bg-primary">
                 <div className="container">
-                    <a className="navbar-brand" href="/">My Shop</a>
-
+                    <Link className="navbar-brand" to="/">My Shop</Link>
                     <div className="d-flex gap-3">
-                        <a className="text-white text-decoration-none" href="/">Trang chủ</a>
-                        <a className="text-white text-decoration-none" href="/products">Sản phẩm</a>
+                        <Link className="text-white text-decoration-none" to="/">Home</Link>
+                        <Link className="text-white text-decoration-none" to="/products">Products</Link>
                     </div>
                 </div>
             </nav>
