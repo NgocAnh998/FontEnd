@@ -1,17 +1,5 @@
 
-type Product = {
-    id: number;
-    name: string;
-    price: number;
-    image: string;
-    description: string;
-};
-
-type ProductItemProps = {
-    product: Product;
-};
-
-function ProductItem({ product }: ProductItemProps) {
+export default function ProductItem({ product }: { product: any }) {
     return (
         <div className="col-12 col-sm-6 col-lg-3">
             <div className="card h-100 shadow-sm">
@@ -28,4 +16,3 @@ function ProductItem({ product }: ProductItemProps) {
     );
 }
 
-export default ProductItem;
