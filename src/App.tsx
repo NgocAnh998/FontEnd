@@ -36,7 +36,7 @@ function App() {
     return (
         <>
             <Header />
-            <ListProduct products={products} />
+            <ListProduct  />
             <Footer />
         </>
     )
