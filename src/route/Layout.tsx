@@ -6,6 +6,7 @@ import Footer from '../components/common/Footer';
 function Layout() {
     return (
         <>
+
             <Header />
 
             <main className="container py-4">
