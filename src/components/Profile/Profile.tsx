@@ -9,13 +9,23 @@ function Profile() {
         "https://placehold.co/150x150?text=Avatar"
     );
 
-    const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const changeAvatar = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
 
         if (!file) return;
         setAvatar(URL.createObjectURL(file));
 
     };
+
+    const submitProfile = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        if (!fullName.trim()) {
+            return;
+        }
+
+    };
+
 
     return (
         <div className="container py-4">
@@ -32,7 +42,7 @@ function Profile() {
                             <img src={avatar} alt="Ảnh đại diện" className="rounded-circle mb-3 border" style={{width: "150px",height: "150px", objectFit: "cover"}}/>
                             <div>
                                 <label htmlFor="avatar" className="btn btn-outline-secondary btn-sm" > Chọn ảnh </label>
-                                <input type="file" id="avatar" className="d-none" accept="image/*" onChange={handleAvatarChange} />
+                                <input type="file" id="avatar" className="d-none" accept="image/*" onChange={changeAvatar} />
                             </div>
                             <hr />
 
@@ -48,7 +58,8 @@ function Profile() {
                         <div className="card-body p-4">
                             <h5 className="fw-bold mb-4">Thông tin tài khoản</h5>
 
-                                {/* Họ tên */}
+                            <form onSubmit={submitProfile} noValidate>
+                            {/* Họ tên */}
                                 <div className="mb-3">
                                     <label className="form-label fw-semibold"> Họ và tên</label>
 
@@ -81,6 +92,8 @@ function Profile() {
 
                                     <button type="submit" className="btn btn-success px-4" > Lưu thay đổi </button>
                                 </div>
+                            </form>
+
                         </div>
                     </div>
                 </div>
