@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { initialReviews, type ReviewItem } from "../../data/reviews";
 
 interface ProductInfo {
-    id: number;
+    id: string;
     name: string;
     price: number;
     image?: string;

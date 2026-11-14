@@ -1,6 +1,6 @@
 import type { CartItem as CartProduct } from '../data/products'
 
-type Props = { item: CartProduct; onIncrease: (id: number) => void; onDecrease: (id: number) => void;onRemove: (id: number) => void }
+type Props = { item: CartProduct; onIncrease: (id: string) => void; onDecrease: (id: string) => void;onRemove: (id: string) => void }
 
 function CartItem({ item, onIncrease, onDecrease, onRemove }: Props) {
     return (

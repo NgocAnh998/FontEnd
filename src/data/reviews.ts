@@ -1,6 +1,6 @@
 export interface ReviewItem {
     id: number;
-    productId: number;
+    productId: string;
     userName: string;
     rating: number;
     content: string;
@@ -10,7 +10,7 @@ export interface ReviewItem {
 export const initialReviews: ReviewItem[] = [
     {
         id: 1,
-        productId: 1,
+        productId: 'p1',
         userName: "Minh Anh",
         rating: 5,
         content: "Sản phẩm làm rất tỉ mỉ, đóng gói cẩn thận, mùi hương dễ chịu.",
@@ -18,7 +18,7 @@ export const initialReviews: ReviewItem[] = [
     },
     {
         id: 2,
-        productId: 1,
+        productId: 'p1',
         userName: "Hoàng Nam",
         rating: 4,
         content: "Giao hàng hơi lâu một chút nhưng chất lượng đồ handmade rất xứng đáng.",
@@ -26,7 +26,7 @@ export const initialReviews: ReviewItem[] = [
     },
     {
         id: 3,
-        productId: 2,
+        productId: 'p2',
         userName: "Thu Hà",
         rating: 5,
         content: "Màu sắc bên ngoài đẹp hơn trong ảnh, sẽ ủng hộ shop tiếp.",
