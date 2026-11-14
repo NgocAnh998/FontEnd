@@ -9,6 +9,14 @@ function Profile() {
         "https://placehold.co/150x150?text=Avatar"
     );
 
+    const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+
+        if (!file) return;
+        setAvatar(URL.createObjectURL(file));
+
+    };
+
     return (
         <div className="container py-4">
             <div className="mb-4">
@@ -24,6 +32,7 @@ function Profile() {
                             <img src={avatar} alt="Ảnh đại diện" className="rounded-circle mb-3 border" style={{width: "150px",height: "150px", objectFit: "cover"}}/>
                             <div>
                                 <label htmlFor="avatar" className="btn btn-outline-secondary btn-sm" > Chọn ảnh </label>
+                                <input type="file" id="avatar" className="d-none" accept="image/*" onChange={handleAvatarChange} />
                             </div>
                             <hr />
 
