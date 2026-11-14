@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { products } from './Product/ListProduct';
+import { products } from '../data/products';
 
 const categories = [
     { id: 1, name: 'Hoa', icon: 'H' },
