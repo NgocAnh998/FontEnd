@@ -1,7 +1,23 @@
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
 import type { Product } from '../../types/product';
+import type { RootState, AppDispatch } from '../../store/Store';
+import { toggleWishlist } from '../../store/slice/WishlistSlice';
 
 function ProductItem({ product }: { product: Product }) {
+    const dispatch = useDispatch<AppDispatch>();
+
+    const wishlist = useSelector(
+        (state: RootState) => state.wishlist.items
+    );
+
+    const isFavorite = wishlist.includes(product.id);
+
+    const handleWishlist = () => {
+        dispatch(toggleWishlist(product.id));
+    };
+
     return (
         <div className="col-12 col-sm-6 col-lg-3">
             <div className="card h-100 shadow-sm">
@@ -21,7 +37,7 @@ function ProductItem({ product }: { product: Product }) {
 
                     <h5 className="card-title">{product.name}</h5>
 
-                    <p className="card-text text-muted">
+                    <p className="text-muted">
                         ⭐ {product.rating} | Đã bán {product.soldCount}
                     </p>
 
@@ -29,15 +45,18 @@ function ProductItem({ product }: { product: Product }) {
                         {product.price.toLocaleString('vi-VN')}đ
                     </h5>
 
-                    {product.originalPrice && (
-                        <del className="text-muted mb-2">
-                            {product.originalPrice.toLocaleString('vi-VN')}đ
-                        </del>
-                    )}
-
                     <p className={product.inStock ? 'text-success' : 'text-danger'}>
                         {product.inStock ? 'Còn hàng' : 'Hết hàng'}
                     </p>
+
+                    <button
+                        className={`btn mb-2 ${
+                            isFavorite ? 'btn-danger' : 'btn-outline-danger'
+                        }`}
+                        onClick={handleWishlist}
+                    >
+                        {isFavorite ? '♥ Đã yêu thích' : '♡ Thêm yêu thích'}
+                    </button>
 
                     <Link
                         to={`/products/${product.id}`}
