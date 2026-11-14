@@ -27,6 +27,9 @@ function Header() {
                         <Link className="nav-link mt-3" to="/wishlist">
                             Wishlist ({wishlist.length})
                         </Link>
+                        <Link className="nav-link mt-3" to="/profile">
+                            Hồ sơ cá nhân
+                        </Link>
                     </div>
                 </div>
             </nav>
