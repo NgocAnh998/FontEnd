@@ -5,6 +5,7 @@ import ListProduct from "../components/Product/ListProduct";
 import ProductDetail from "../components/Product/ProductDetail";
 import Layout from "./Layout";
 import Error from "./Error";
+import Profile from "../components/Profile/Profile";
 
 export const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
             {
                 path: "wishlist",
                 element: <Wishlist />
+            },
+            {
+                path: "profile",
+                element: <Profile />
             }
         ]
     }
