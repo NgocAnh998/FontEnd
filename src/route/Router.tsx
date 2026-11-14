@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-
+import Wishlist from "../components/Product/Wishlist";
 import Home from "../components/Home";
 import ListProduct from "../components/Product/ListProduct";
 import ProductDetail from "../components/Product/ProductDetail";
@@ -15,6 +15,7 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <Home />
+
             },
             {
                 path: "products",
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
             {
                 path: "products/:id",
                 element: <ProductDetail />
+            },
+            {
+                path: "wishlist",
+                element: <Wishlist />
             }
         ]
     }
