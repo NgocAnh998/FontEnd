@@ -30,6 +30,12 @@ function Header() {
                         <Link className="nav-link mt-3" to="/profile">
                             Hồ sơ cá nhân
                         </Link>
+
+                        {/*/login*/}
+                        {/*/register*/}
+                        {/*/forgot-password*/}
+                        {/*/reset-password*/}
+                        {/*/addresses*/}
                     </div>
                 </div>
             </nav>
