@@ -6,6 +6,7 @@ import ProductDetail from "../components/Product/ProductDetail";
 import Layout from "./Layout";
 import Error from "./Error";
 import Profile from "../components/Profile/Profile";
+import Login from "../components/Auth/Login";
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
             {
                 path: "profile",
                 element: <Profile />
+            },
+            {
+                path: "login",
+                element: <Login />
             }
         ]
     }

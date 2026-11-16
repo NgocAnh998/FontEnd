@@ -31,11 +31,11 @@ function Header() {
                             Hồ sơ cá nhân
                         </Link>
 
-                        {/*/login*/}
-                        {/*/register*/}
-                        {/*/forgot-password*/}
-                        {/*/reset-password*/}
-                        {/*/addresses*/}
+                        <Link className="nav-link mt-3" to="/login">
+                            Đăng nhập
+                        </Link>
+
+
                     </div>
                 </div>
             </nav>

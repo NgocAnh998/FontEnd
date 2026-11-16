@@ -30,7 +30,7 @@ function Login() {
             <div className="row justify-content-center align-items-center">
                 <div className="col-12 col-md-8 col-lg-5">
 
-                    <div className="card shadow-handmade border-0 p-4 p-md-5">
+                    <div className="card shadow-handmade border-0 p-4 p-md-5 text-start">
                         <div className="text-center mb-4">
                             <h2 className="section-title mb-2"> Chào mừng trở lại! </h2>
                             <p className="text-muted-custom"> Đăng nhập để tiếp tục mua sắm cùng chúng tôi. </p>
