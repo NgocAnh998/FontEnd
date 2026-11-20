@@ -53,6 +53,12 @@ function Header() {
                                 </span>
                             </NavLink>
                         </li>
+
+                        <li className="nav-item">
+                            <NavLink className={linkClass} to="/login">
+                                đăng nhập
+                            </NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>
