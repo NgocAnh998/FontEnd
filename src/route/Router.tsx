@@ -10,6 +10,7 @@ import Login from "../components/Auth/Login";
 import Register from "../components/Auth/Register";
 import LayoutAdmin from "./admin/LayoutAdmin.tsx";
 import DashboardAdmin from "../pages/admin/DashBoard.tsx";
+import AdminUser from "../pages/admin/AdminUser";
 
 export const router = createBrowserRouter([
     {
@@ -53,6 +54,9 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <DashboardAdmin />,
+            },{
+                path: "users",
+                element: <AdminUser />,
             },
         ],
     },
