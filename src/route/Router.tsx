@@ -8,6 +8,8 @@ import Error from "./Error";
 import Profile from "../components/Profile/Profile";
 import Login from "../components/Auth/Login";
 import Register from "../components/Auth/Register";
+import LayoutAdmin from "./admin/LayoutAdmin.tsx";
+import DashboardAdmin from "../pages/admin/DashBoard.tsx";
 
 export const router = createBrowserRouter([
     {
@@ -42,5 +44,16 @@ export const router = createBrowserRouter([
             },
             { path: "register", element: <Register /> },
         ]
-    }
+    },
+    {
+        path: "/admin",
+        element: <LayoutAdmin />,
+        errorElement: <Error />,
+        children: [
+            {
+                index: true,
+                element: <DashboardAdmin />,
+            },
+        ],
+    },
 ]);
