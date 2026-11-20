@@ -11,6 +11,8 @@ import Register from "../components/Auth/Register";
 import LayoutAdmin from "./admin/LayoutAdmin.tsx";
 import DashboardAdmin from "../pages/admin/DashBoard.tsx";
 import AdminUser from "../pages/admin/AdminUser";
+import AdminOrder from "../pages/admin/AdminOrder.tsx";
+import AdminProduct from "../pages/admin/AdminProduct.tsx";
 
 export const router = createBrowserRouter([
     {
@@ -57,6 +59,13 @@ export const router = createBrowserRouter([
             },{
                 path: "users",
                 element: <AdminUser />,
+            },{
+                path: "products",
+                element: <AdminProduct />,
+            },
+            {
+                path: "orders",
+                element: <AdminOrder />,
             },
         ],
     },
