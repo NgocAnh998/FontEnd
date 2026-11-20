@@ -1,63 +1,46 @@
-import {createBrowserRouter, Router} from "react-router-dom";
-import Home from "../components/Home"
-import ListProduct from "../components/Product/ListProduct.tsx";
-import Layout from "./Layout.tsx";
-import Error from "./Error.tsx";
-import ProductDetail from '../components/Product/ProductDetail';
-
-const dataLoader = ()=>{
-    const data = [
-        {
-            id: 1,
-            name: 'Áo thun nam',
-            price: 199000,
-            image: 'https://placehold.co/400x300?text=Ao+thun',
-            description: 'Áo thun cotton thoáng mát'
-        },
-        {
-            id: 2,
-            name: 'Giày thể thao',
-            price: 599000,
-            image: 'https://placehold.co/400x300?text=Giay',
-            description: 'Giày thể thao năng động'
-        },
-        {
-            id: 3,
-            name: 'Ba lô thời trang',
-            price: 349000,
-            image: 'https://placehold.co/400x300?text=Ba+lo',
-            description: 'Ba lô tiện lợi khi đi học'
-        },
-        {
-            id: 4,
-            name: 'Đồng hồ nam',
-            price: 899000,
-            image: 'https://placehold.co/400x300?text=Dong+ho',
-            description: 'Đồng hồ phong cách hiện đại'
-        }
-    ];
-}
+import { createBrowserRouter } from "react-router-dom";
+import Wishlist from "../components/Product/Wishlist";
+import Home from "../components/Home";
+import ListProduct from "../components/Product/ListProduct";
+import ProductDetail from "../components/Product/ProductDetail";
+import Layout from "./Layout";
+import Error from "./Error";
+import Profile from "../components/Profile/Profile";
+import Login from "../components/Auth/Login";
+import Register from "../components/Auth/Register";
 
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <Layout/>,
-        errorElement: <Error/>,
-        children:[
+        element: <Layout />,
+        errorElement: <Error />,
+        children: [
             {
-                index:true,
-                element:<Home />
+                index: true,
+                element: <Home />
+
             },
             {
-                path:"products",
-                element:<ListProduct/>,
-                loader:dataLoader
-            },{
-                path: 'products/:id',
-                element: <ProductDetail />,
-                loader:dataLoader
-            }
-
+                path: "products",
+                element: <ListProduct />
+            },
+            {
+                path: "products/:id",
+                element: <ProductDetail />
+            },
+            {
+                path: "wishlist",
+                element: <Wishlist />
+            },
+            {
+                path: "profile",
+                element: <Profile />
+            },
+            {
+                path: "login",
+                element: <Login />
+            },
+            { path: "register", element: <Register /> },
         ]
     }
 ]);
