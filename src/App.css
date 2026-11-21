@@ -430,3 +430,38 @@ h1, h2, h3, h4, h5, h6 {
 .accordion-button:focus {
     box-shadow: 0 0 0 0.2rem rgba(121, 85, 72, 0.15);
 }
+
+/* =========================================
+   14. PROFILE MENU
+========================================= */
+.profile-menu .nav-link {
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.profile-menu .nav-link:hover {
+    background-color: var(--color-sage-light);
+    color: var(--color-primary-dark);
+}
+
+.profile-menu .nav-link.active {
+    background-color: var(--color-primary);
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+/* Mobile Profile Menu */
+@media (max-width: 767.98px) {
+    .profile-menu {
+        flex-direction: row !important;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 5px;
+    }
+
+    .profile-menu .nav-link {
+        margin-right: 5px;
+        margin-bottom: 0 !important;
+    }
+}
