@@ -8,6 +8,12 @@ import Error from "./Error";
 import Profile from "../components/Profile/Profile";
 import Login from "../components/Auth/Login";
 import Register from "../components/Auth/Register";
+import LayoutAdmin from "./admin/LayoutAdmin.tsx";
+import DashboardAdmin from "../pages/admin/DashBoard.tsx";
+import AdminUser from "../pages/admin/AdminUser";
+import AdminOrder from "../pages/admin/AdminOrder.tsx";
+import AdminProduct from "../pages/admin/AdminProduct.tsx";
+import ForgotPassword from "../components/Auth/ForgotPassword";
 
 export const router = createBrowserRouter([
     {
@@ -41,6 +47,28 @@ export const router = createBrowserRouter([
                 element: <Login />
             },
             { path: "register", element: <Register /> },
+            { path: "forgot-password", element: <ForgotPassword /> },
         ]
-    }
+    },
+    {
+        path: "/admin",
+        element: <LayoutAdmin />,
+        errorElement: <Error />,
+        children: [
+            {
+                index: true,
+                element: <DashboardAdmin />,
+            },{
+                path: "users",
+                element: <AdminUser />,
+            },{
+                path: "products",
+                element: <AdminProduct />,
+            },
+            {
+                path: "orders",
+                element: <AdminOrder />,
+            },
+        ],
+    },
 ]);
