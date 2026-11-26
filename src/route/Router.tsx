@@ -13,6 +13,7 @@ import DashboardAdmin from "../pages/admin/DashBoard.tsx";
 import AdminUser from "../pages/admin/AdminUser";
 import AdminOrder from "../pages/admin/AdminOrder.tsx";
 import AdminProduct from "../pages/admin/AdminProduct.tsx";
+import ForgotPassword from "../components/Auth/ForgotPassword";
 
 export const router = createBrowserRouter([
     {
@@ -46,6 +47,7 @@ export const router = createBrowserRouter([
                 element: <Login />
             },
             { path: "register", element: <Register /> },
+            { path: "forgot-password", element: <ForgotPassword /> },
         ]
     },
     {

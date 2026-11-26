@@ -56,7 +56,7 @@ function Header() {
 
                         <li className="nav-item">
                             <NavLink className={linkClass} to="/login">
-                                đăng nhập
+                                Đăng Nhập
                             </NavLink>
                         </li>
                     </ul>
