@@ -1,3 +1,24 @@
+import StatCard from "./StatCard";
+
+const stats = [
+    { title: "Total Products", value: "120", note: "Products in store", icon: "bi-box-seam", color: "success" },
+    { title: "Total Users", value: "350", note: "Registered users", icon: "bi-people", color: "primary" },
+    { title: "Total Orders", value: "85", note: "Orders received", icon: "bi-cart-check", color: "warning" },
+    { title: "Revenue", value: "25.000.000đ", note: "Total revenue", icon: "bi-cash-coin", color: "info" }
+] as const;
+
+const orderStatus = [
+    { label: "Completed", percent: 60, color: "success" },
+    { label: "Processing", percent: 25, color: "warning" },
+    { label: "Cancelled", percent: 15, color: "danger" }
+];
+
+const activities = [
+    { id: 1, text: "New order received", date: "20/11/2026", status: "Completed", badge: "text-bg-success" },
+    { id: 2, text: "New user registered", date: "20/11/2026", status: "New", badge: "text-bg-primary" },
+    { id: 3, text: "Product inventory updated", date: "19/11/2026", status: "Updated", badge: "text-bg-warning" }
+];
+
 function DashboardAdmin() {
     return (
         <div>
@@ -7,98 +28,78 @@ function DashboardAdmin() {
             </div>
 
             <div className="row g-4 mb-4">
-                <div className="col-md-6 col-xl-3">
-                    <div className="card border-0 shadow-sm">
-                        <div className="card-body">
-                            <h6 className="text-muted">Total Products</h6>
-                            <h3 className="fw-bold">120</h3>
-                            <span className="text-success">Products in store</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-md-6 col-xl-3">
-                    <div className="card border-0 shadow-sm">
-                        <div className="card-body">
-                            <h6 className="text-muted">Total Users</h6>
-                            <h3 className="fw-bold">350</h3>
-                            <span className="text-primary">Registered users</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-md-6 col-xl-3">
-                    <div className="card border-0 shadow-sm">
-                        <div className="card-body">
-                            <h6 className="text-muted">Total Orders</h6>
-                            <h3 className="fw-bold">85</h3>
-                            <span className="text-warning">Orders received</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-md-6 col-xl-3">
-                    <div className="card border-0 shadow-sm">
-                        <div className="card-body">
-                            <h6 className="text-muted">Revenue</h6>
-                            <h3 className="fw-bold">25.000.000đ</h3>
-                            <span className="text-success">Total revenue</span>
-                        </div>
-                    </div>
-                </div>
+                {stats.map((item) => (
+                    <StatCard key={item.title} {...item} />
+                ))}
             </div>
 
-            <div className="card border-0 shadow-sm">
-                <div className="card-header bg-white py-3">
-                    <h5 className="mb-0">Recent Activities</h5>
+            <div className="row g-4">
+                <div className="col-lg-4">
+                    <div className="card border-0 shadow-sm h-100">
+                        <div className="card-header bg-white py-3">
+                            <h5 className="mb-0">Order Status</h5>
+                        </div>
+
+                        <div className="card-body">
+                            {orderStatus.map((item) => (
+                                <div className="mb-3" key={item.label}>
+                                    <div className="d-flex justify-content-between small mb-1">
+                                        <span>{item.label}</span>
+                                        <span className="fw-semibold">{item.percent}%</span>
+                                    </div>
+
+                                    <div className="progress" style={{ height: "8px" }}>
+                                        <div
+                                            className={`progress-bar bg-${item.color}`}
+                                            role="progressbar"
+                                            style={{ width: `${item.percent}%` }}
+                                            aria-valuenow={item.percent}
+                                            aria-valuemin={0}
+                                            aria-valuemax={100}
+                                        ></div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
 
-                <div className="card-body">
-                    <table className="table table-hover align-middle mb-0">
-                        <thead className="table-light">
-                        <tr>
-                            <th>#</th>
-                            <th>Activity</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                        </tr>
-                        </thead>
+                <div className="col-lg-8">
+                    <div className="card border-0 shadow-sm h-100">
+                        <div className="card-header bg-white py-3">
+                            <h5 className="mb-0">Recent Activities</h5>
+                        </div>
 
-                        <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>New order received</td>
-                            <td>20/11/2026</td>
-                            <td>
-                                    <span className="badge bg-success">
-                                        Completed
-                                    </span>
-                            </td>
-                        </tr>
+                        <div className="card-body">
+                            <div className="table-responsive">
+                                <table className="table table-hover align-middle mb-0">
+                                    <thead className="table-light">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Activity</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    </thead>
 
-                        <tr>
-                            <td>2</td>
-                            <td>New user registered</td>
-                            <td>20/11/2026</td>
-                            <td>
-                                    <span className="badge bg-primary">
-                                        New
-                                    </span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>3</td>
-                            <td>Product inventory updated</td>
-                            <td>19/11/2026</td>
-                            <td>
-                                    <span className="badge bg-warning text-dark">
-                                        Updated
-                                    </span>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                                    <tbody>
+                                    {activities.map((item) => (
+                                        <tr key={item.id}>
+                                            <td>{item.id}</td>
+                                            <td>{item.text}</td>
+                                            <td>{item.date}</td>
+                                            <td>
+                                                    <span className={`badge ${item.badge}`}>
+                                                        {item.status}
+                                                    </span>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

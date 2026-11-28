@@ -1,6 +1,6 @@
-
 import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
+import PasswordInput from "./PasswordInput";
 
 function Register() {
     const [fullName, setFullName] = useState("");
@@ -43,54 +43,115 @@ function Register() {
     };
 
     return (
-        <div className="container py-5">
-            <div className="row justify-content-center">
-                <div className="col-12 col-md-9 col-lg-6">
-                    <div className="card shadow-handmade border-0 p-4 p-md-5 text-start">
-                        <div className="text-center mb-4">
-                            <h2 className="section-title mb-2">Tạo tài khoản</h2>
-                            <p className="text-muted-custom">Đăng ký để khám phá những sản phẩm handmade độc đáo.</p>
+        <div className="row justify-content-center py-4">
+            <div className="col-12 col-md-9 col-lg-6">
+                <div className="card shadow-handmade border-0 p-4 p-md-5 text-start">
+                    <div className="text-center mb-4">
+                        <i className="bi bi-person-plus fs-1 text-accent"></i>
+                        <h2 className="section-title mt-2 mb-2">Tạo tài khoản</h2>
+                        <p className="text-muted-custom mb-0">
+                            Đăng ký để khám phá những sản phẩm handmade độc đáo.
+                        </p>
+                    </div>
+
+                    <form onSubmit={submitRegister} noValidate>
+                        <div className="mb-3">
+                            <label className="form-label fw-semibold">Họ và tên</label>
+
+                            <div className="input-group">
+                                <span className="input-group-text bg-white">
+                                    <i className="bi bi-person"></i>
+                                </span>
+
+                                <input
+                                    type="text"
+                                    className="form-control py-2"
+                                    placeholder="Nhập họ và tên"
+                                    value={fullName}
+                                    onChange={(e) => setFullName(e.target.value)}
+                                />
+                            </div>
                         </div>
 
-                        <form onSubmit={submitRegister}>
-                            <div className="mb-3">
-                                <label className="form-label fw-semibold">Họ và tên</label>
-                                <input type="text" className="form-control py-2" placeholder="Nhập họ và tên" value={fullName} onChange={(e) => setFullName(e.target.value)} />
-                            </div>
-
-                            <div className="mb-3">
+                        <div className="row g-3 mb-3">
+                            <div className="col-md-6">
                                 <label className="form-label fw-semibold">Email</label>
-                                <input type="email" className="form-control py-2" placeholder="example@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+
+                                <div className="input-group">
+                                    <span className="input-group-text bg-white">
+                                        <i className="bi bi-envelope"></i>
+                                    </span>
+
+                                    <input
+                                        type="email"
+                                        className="form-control py-2"
+                                        placeholder="example@gmail.com"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                    />
+                                </div>
                             </div>
 
-                            <div className="mb-3">
+                            <div className="col-md-6">
                                 <label className="form-label fw-semibold">Số điện thoại</label>
-                                <input type="tel" className="form-control py-2" placeholder="Nhập số điện thoại" value={phone} onChange={(e) => setPhone(e.target.value)} />
+
+                                <div className="input-group">
+                                    <span className="input-group-text bg-white">
+                                        <i className="bi bi-telephone"></i>
+                                    </span>
+
+                                    <input
+                                        type="tel"
+                                        className="form-control py-2"
+                                        placeholder="Nhập số điện thoại"
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value)}
+                                    />
+                                </div>
                             </div>
-
-                            <div className="mb-3">
-                                <label className="form-label fw-semibold">Mật khẩu</label>
-                                <input type="password" className="form-control py-2" placeholder="Tối thiểu 6 ký tự" value={password} onChange={(e) => setPassword(e.target.value)} />
-                            </div>
-
-                            <div className="mb-3">
-                                <label className="form-label fw-semibold">Xác nhận mật khẩu</label>
-                                <input type="password" className="form-control py-2" placeholder="Nhập lại mật khẩu" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-                            </div>
-
-                            {error && <div className="alert alert-danger py-2">{error}</div>}
-
-                            <button type="submit" className="btn btn-primary w-100 py-2 fw-semibold">Đăng ký</button>
-                        </form>
-
-                        <div className="text-center mt-4">
-                            <span className="text-muted-custom">Bạn đã có tài khoản?</span>{" "}
-                            <Link to="/login" className="text-accent fw-semibold">Đăng nhập</Link>
                         </div>
 
-                        <div className="text-center mt-3">
-                            <Link to="/" className="text-muted-custom small">← Quay lại trang chủ</Link>
+                        <div className="mb-3">
+                            <label className="form-label fw-semibold">Mật khẩu</label>
+                            <PasswordInput
+                                value={password}
+                                placeholder="Tối thiểu 6 ký tự"
+                                onChange={setPassword}
+                            />
                         </div>
+
+                        <div className="mb-3">
+                            <label className="form-label fw-semibold">Xác nhận mật khẩu</label>
+                            <PasswordInput
+                                value={confirmPassword}
+                                placeholder="Nhập lại mật khẩu"
+                                onChange={setConfirmPassword}
+                            />
+                        </div>
+
+                        {error && (
+                            <div className="alert alert-danger py-2 d-flex align-items-center gap-2">
+                                <i className="bi bi-exclamation-circle"></i>
+                                {error}
+                            </div>
+                        )}
+
+                        <button type="submit" className="btn btn-primary w-100 py-2 fw-semibold">
+                            Đăng ký
+                        </button>
+                    </form>
+
+                    <div className="text-center mt-4">
+                        <span className="text-muted-custom">Bạn đã có tài khoản?</span>{" "}
+                        <Link to="/login" className="text-accent fw-semibold">
+                            Đăng nhập
+                        </Link>
+                    </div>
+
+                    <div className="text-center mt-3">
+                        <Link to="/" className="text-muted-custom small">
+                            ← Quay lại trang chủ
+                        </Link>
                     </div>
                 </div>
             </div>

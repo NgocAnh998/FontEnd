@@ -2,6 +2,14 @@ import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../store/Store';
 
+const accountLinks = [
+    { to: '/profile', label: 'Hồ sơ cá nhân', icon: 'bi-person' },
+    { to: '/profile/orders', label: 'Đơn hàng', icon: 'bi-receipt' },
+    { to: '/profile/vouchers', label: 'Voucher', icon: 'bi-ticket-perforated' },
+    { to: '/profile/messages', label: 'Tin nhắn', icon: 'bi-chat-dots' },
+    { to: '/profile/addresses', label: 'Địa chỉ', icon: 'bi-geo-alt' }
+];
+
 function Header() {
     const wishlist = useSelector(
         (state: RootState) => state.wishlist.items
@@ -54,10 +62,45 @@ function Header() {
                             </NavLink>
                         </li>
 
-                        <li className="nav-item">
-                            <NavLink className={linkClass} to="/login">
-                                Đăng Nhập
-                            </NavLink>
+                        <li className="nav-item dropdown">
+                            <button
+                                type="button"
+                                className="nav-link dropdown-toggle px-3"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                <i className="bi bi-person-circle me-1"></i>
+                                Tài khoản
+                            </button>
+
+                            <ul className="dropdown-menu dropdown-menu-end shadow-sm">
+                                <li>
+                                    <Link className="dropdown-item" to="/login">
+                                        <i className="bi bi-box-arrow-in-right me-2"></i>
+                                        Đăng nhập
+                                    </Link>
+                                </li>
+
+                                <li>
+                                    <Link className="dropdown-item" to="/register">
+                                        <i className="bi bi-person-plus me-2"></i>
+                                        Đăng ký
+                                    </Link>
+                                </li>
+
+                                <li>
+                                    <hr className="dropdown-divider" />
+                                </li>
+
+                                {accountLinks.map((item) => (
+                                    <li key={item.to}>
+                                        <Link className="dropdown-item" to={item.to}>
+                                            <i className={`bi ${item.icon} me-2`}></i>
+                                            {item.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
                         </li>
                     </ul>
                 </div>

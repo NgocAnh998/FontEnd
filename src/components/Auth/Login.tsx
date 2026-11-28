@@ -1,6 +1,6 @@
-
 import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
+import PasswordInput from "./PasswordInput";
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -10,7 +10,6 @@ function Login() {
     const submitLogin = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        // Kiểm tra dữ liệu nhập
         if (!email || !password) {
             setError("Vui lòng nhập đầy đủ email và mật khẩu.");
             return;
@@ -26,54 +25,75 @@ function Login() {
     };
 
     return (
-        <div className="container py-5">
-            <div className="row justify-content-center align-items-center">
-                <div className="col-12 col-md-8 col-lg-5">
-
-                    <div className="card shadow-handmade border-0 p-4 p-md-5 text-start">
-                        <div className="text-center mb-4">
-                            <h2 className="section-title mb-2"> Chào mừng trở lại! </h2>
-                            <p className="text-muted-custom"> Đăng nhập để tiếp tục mua sắm cùng chúng tôi. </p>
-                        </div>
-
-                        {/* Form đăng nhập */}
-                        <form onSubmit={submitLogin}>
-                            <div className="mb-3">
-                                <label className="form-label fw-semibold">Email</label>
-
-                                <input type="email" className="form-control py-2" placeholder="Nhập email của bạn" value={email}
-                                    onChange={(e) => setEmail(e.target.value)} />
-                            </div>
-
-                            <div className="mb-3"> <label className="form-label fw-semibold"> Mật khẩu </label>
-
-                                <input type="password" className="form-control py-2" placeholder="Nhập mật khẩu" value={password}
-                                    onChange={(e) => setPassword(e.target.value)} />
-                            </div>
-
-                            <div className="text-end mb-3">
-                                <Link to="/forgot-password" className="text-accent small" > Quên mật khẩu? </Link>
-                            </div>
-
-                            {/* Thông báo lỗi */}
-                            {error && (
-                                <div className="alert alert-danger py-2"> {error} </div>
-                            )}
-
-                            <button type="submit" className="btn btn-primary w-100 py-2 fw-semibold" > Đăng nhập </button>
-                        </form>
-
-                        {/* Đăng ký */}
-                        <div className="text-center mt-4">
-                            <span className="text-muted-custom"> Bạn chưa có tài khoản? </span>{" "}
-                            <Link to="/register" className="text-accent fw-semibold" > Đăng ký ngay </Link>
-                        </div>
-
-                        <div className="text-center mt-3">
-                            <Link to="/" className="text-muted-custom small"> Quay lại trang chủ </Link>
-                        </div>
+        <div className="row justify-content-center py-4">
+            <div className="col-12 col-md-8 col-lg-5">
+                <div className="card shadow-handmade border-0 p-4 p-md-5 text-start">
+                    <div className="text-center mb-4">
+                        <i className="bi bi-person-circle fs-1 text-accent"></i>
+                        <h2 className="section-title mt-2 mb-2">Chào mừng trở lại!</h2>
+                        <p className="text-muted-custom mb-0">
+                            Đăng nhập để tiếp tục mua sắm cùng chúng tôi.
+                        </p>
                     </div>
 
+                    <form onSubmit={submitLogin} noValidate>
+                        <div className="mb-3">
+                            <label className="form-label fw-semibold">Email</label>
+
+                            <div className="input-group">
+                                <span className="input-group-text bg-white">
+                                    <i className="bi bi-envelope"></i>
+                                </span>
+
+                                <input
+                                    type="email"
+                                    className="form-control py-2"
+                                    placeholder="Nhập email của bạn"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="mb-2">
+                            <label className="form-label fw-semibold">Mật khẩu</label>
+                            <PasswordInput
+                                value={password}
+                                placeholder="Nhập mật khẩu"
+                                onChange={setPassword}
+                            />
+                        </div>
+
+                        <div className="text-end mb-3">
+                            <Link to="/forgot-password" className="text-accent small">
+                                Quên mật khẩu?
+                            </Link>
+                        </div>
+
+                        {error && (
+                            <div className="alert alert-danger py-2 d-flex align-items-center gap-2">
+                                <i className="bi bi-exclamation-circle"></i>
+                                {error}
+                            </div>
+                        )}
+
+                        <button type="submit" className="btn btn-primary w-100 py-2 fw-semibold">
+                            Đăng nhập
+                        </button>
+                    </form>
+
+                    <div className="text-center mt-4">
+                        <span className="text-muted-custom">Bạn chưa có tài khoản?</span>{" "}
+                        <Link to="/register" className="text-accent fw-semibold">
+                            Đăng ký ngay
+                        </Link>
+                    </div>
+
+                    <div className="text-center mt-3">
+                        <Link to="/" className="text-muted-custom small">
+                            Quay lại trang chủ
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
