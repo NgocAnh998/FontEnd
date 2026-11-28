@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 
-import type { RootState } from '../../store/Store';
+import { useAppSelector } from '../../store/hooks';
+import { selectProducts } from '../../store/selectors';
 import EmptyState from '../common/EmptyState';
 import ProductItem from './ProductItem';
 import ProductFilter from './ProductFilter';
@@ -17,7 +17,7 @@ const defaultFilters: FilterState = {
 };
 
 export default function ListProduct() {
-    const products = useSelector((state: RootState) => state.products);
+    const products = useAppSelector(selectProducts);
 
     const [searchParams] = useSearchParams();
 

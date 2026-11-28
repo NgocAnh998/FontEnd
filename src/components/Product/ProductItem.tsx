@@ -1,18 +1,14 @@
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 
 import type { Product } from '../../types/product';
-import type { RootState, AppDispatch } from '../../store/Store';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { selectIsFavorite } from '../../store/selectors';
 import { toggleWishlist } from '../../store/slice/WishlistSlice';
 
 function ProductItem({ product }: { product: Product }) {
-    const dispatch = useDispatch<AppDispatch>();
+    const dispatch = useAppDispatch();
 
-    const wishlist = useSelector(
-        (state: RootState) => state.wishlist.items
-    );
-
-    const isFavorite = wishlist.includes(product.id);
+    const isFavorite = useAppSelector(selectIsFavorite(product.id));
 
     const discount = product.originalPrice
         ? Math.round((1 - product.price / product.originalPrice) * 100)

@@ -1,7 +1,11 @@
 import { useParams, Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 
-import type { RootState, AppDispatch } from '../../store/Store';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import {
+    selectIsFavorite,
+    selectProductById,
+    selectProducts
+} from '../../store/selectors';
 import { toggleWishlist } from '../../store/slice/WishlistSlice';
 import Breadcrumbs from '../common/Breadcrumbs';
 import EmptyState from '../common/EmptyState';
@@ -10,15 +14,11 @@ import ProductItem from './ProductItem';
 function ProductDetail() {
     const { id } = useParams();
 
-    const dispatch = useDispatch<AppDispatch>();
+    const dispatch = useAppDispatch();
 
-    const products = useSelector((state: RootState) => state.products);
-
-    const wishlist = useSelector(
-        (state: RootState) => state.wishlist.items
-    );
-
-    const product = products.find((item) => item.id === id);
+    const products = useAppSelector(selectProducts);
+    const product = useAppSelector(selectProductById(id));
+    const isFavorite = useAppSelector(selectIsFavorite(id ?? ''));
 
     if (!product) {
         return (
@@ -33,8 +33,6 @@ function ProductDetail() {
             </div>
         );
     }
-
-    const isFavorite = wishlist.includes(product.id);
 
     const discount = product.originalPrice
         ? Math.round((1 - product.price / product.originalPrice) * 100)

@@ -1,21 +1,10 @@
-import { useSelector } from 'react-redux';
-
-import type { RootState } from '../../store/Store';
+import { useAppSelector } from '../../store/hooks';
+import { selectFavoriteProducts } from '../../store/selectors';
 import EmptyState from '../common/EmptyState';
 import ProductItem from './ProductItem';
 
 function Wishlist() {
-    const products = useSelector(
-        (state: RootState) => state.products
-    );
-
-    const wishlist = useSelector(
-        (state: RootState) => state.wishlist.items
-    );
-
-    const favoriteProducts = products.filter(
-        (product) => wishlist.includes(product.id)
-    );
+    const favoriteProducts = useAppSelector(selectFavoriteProducts);
 
     return (
         <div>
