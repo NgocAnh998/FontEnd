@@ -14,6 +14,14 @@ import AdminUser from "../pages/admin/User/AdminUser";
 import AdminOrder from "../pages/admin/order/AdminOrder.tsx";
 import AdminProduct from "../pages/admin/Product/AdminProduct.tsx";
 
+import AdminInventory from "../pages/admin/inventory/AdminInventory";
+import AdminPayment from "../pages/admin/payment/AdminPayment";
+import AdminShipping from "../pages/admin/shipping/AdminShipping";
+import AdminPromotion from "../pages/admin/promotion/AdminPromotion";
+import AdminReview from "../pages/admin/review/AdminReview";
+import AdminSupport from "../pages/admin/support/AdminSupport";
+import AdminCategory from "../pages/admin/category/AdminCategory";
+
 export const router = createBrowserRouter([
     {
         path: '/',
@@ -67,6 +75,34 @@ export const router = createBrowserRouter([
                 path: "orders",
                 element: <AdminOrder />,
             },
+            {
+                path: "inventory",
+                element: <AdminInventory />
+            },
+            {
+                path: "payments",
+                element: <AdminPayment />
+            },
+            {
+                path: "shipping",
+                element: <AdminShipping />
+            },
+            {
+                path: "promotions",
+                element: <AdminPromotion />
+            },
+            {
+                path: "reviews",
+                element: <AdminReview />
+            },
+            {
+                path: "support",
+                element: <AdminSupport />
+            },
+            {
+                path: "categories",
+                element: <AdminCategory />
+            }
         ],
     },
 ]);
