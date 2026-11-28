@@ -17,6 +17,7 @@ import ForgotPassword from "../components/Auth/ForgotPassword";
 import Orders from "../pages/Orders/Orders.tsx";
 import Vouchers from "../pages/Vouchers/Vouchers.tsx";
 import  Addresses from "../pages/Addresses/Addresses.tsx"
+import Messages from "../pages/Messages/Messages";
 
 export const router = createBrowserRouter([
     {
@@ -54,6 +55,8 @@ export const router = createBrowserRouter([
             { path:"/profile/orders", element:<Orders /> },
             { path: "/profile/vouchers", element: <Vouchers/>},
             { path: "/profile/addresses", element: <Addresses />},
+            { path: "/profile/messages", element: <Messages />},
+
 
         ]
     },
