@@ -14,6 +14,7 @@ import AdminUser from "../pages/admin/AdminUser";
 import AdminOrder from "../pages/admin/AdminOrder.tsx";
 import AdminProduct from "../pages/admin/AdminProduct.tsx";
 import ForgotPassword from "../components/Auth/ForgotPassword";
+import Orders from "../pages/Orders/Orders.tsx";
 
 export const router = createBrowserRouter([
     {
@@ -48,6 +49,7 @@ export const router = createBrowserRouter([
             },
             { path: "register", element: <Register /> },
             { path: "forgot-password", element: <ForgotPassword /> },
+            { path:"/profile/orders", element:<Orders /> },
         ]
     },
     {

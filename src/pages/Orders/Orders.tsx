@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import "./Orders.css";
+import ProfileMenu from "../../components/Profile/ProfileMenu.tsx";
 
 const initialOrders = [
     {
@@ -130,149 +131,159 @@ function Orders() {
     };
 
     return (
-        <div className="orders-page container py-4">
-            <div className="orders-header mb-4">
-                <h2 className="fw-bold">Đơn hàng của tôi</h2>
-                <p className="text-muted mb-0">
-                    Theo dõi và quản lý các đơn hàng của bạn.
-                </p>
+        <div className="row g-4">
+            <div className="col-12 col-md-4 col-lg-3">
+                <ProfileMenu />
             </div>
+            <div className="col-12 col-md-8 col-lg-9">
+                <div className="orders-page container py-4">
+                    <div className="orders-header mb-4">
+                        <h2 className="fw-bold">Đơn hàng của tôi</h2>
+                        <p className="text-muted mb-0">
+                            Theo dõi và quản lý các đơn hàng của bạn.
+                        </p>
+                    </div>
 
-            {/* Bộ lọc trạng thái */}
-            <div className="orders-filter mb-4">
-                {filters.map((filter) => (
-                    <button
-                        key={filter.value}
-                        className={`orders-filter-btn ${
-                            activeFilter === filter.value ? "active" : ""
-                        }`}
-                        onClick={() => setActiveFilter(filter.value)}
-                    >
-                        {filter.label}
-                    </button>
-                ))}
-            </div>
+                    {/* Bộ lọc trạng thái */}
+                    <div className="orders-filter mb-4">
+                        {filters.map((filter) => (
+                            <button
+                                key={filter.value}
+                                className={`orders-filter-btn ${
+                                    activeFilter === filter.value ? "active" : ""
+                                }`}
+                                onClick={() => setActiveFilter(filter.value)}
+                            >
+                                {filter.label}
+                            </button>
+                        ))}
+                    </div>
 
-            {/* Danh sách đơn hàng */}
-            <div className="orders-list">
-                {filteredOrders.length > 0 ? (
-                    filteredOrders.map((order) => {
-                        const status = statusInfo[order.status];
+                    {/* Danh sách đơn hàng */}
+                    <div className="orders-list">
+                        {filteredOrders.length > 0 ? (
+                            filteredOrders.map((order) => {
+                                const status = statusInfo[order.status];
 
-                        return (
-                            <div className="order-card mb-3" key={order.id}>
-                                <div className="order-card-header">
-                                    <div>
-                                        <span className="text-muted small">Mã đơn hàng</span>
-                                        <h6 className="fw-bold mb-1">{order.id}</h6>
-                                        <span className="text-muted small">Ngày đặt: {order.date} </span>
-                                    </div>
+                                return (
+                                    <div className="order-card mb-3" key={order.id}>
+                                        <div className="order-card-header">
+                                            <div>
+                                                <span className="text-muted small">Mã đơn hàng</span>
+                                                <h6 className="fw-bold mb-1">{order.id}</h6>
+                                                <span className="text-muted small">Ngày đặt: {order.date} </span>
+                                            </div>
 
-                                    <span className={`order-status ${status.className}`}> {status.label} </span>
-                                </div>
+                                            <span className={`order-status ${status.className}`}> {status.label} </span>
+                                        </div>
 
-                                <div className="order-card-body">
-                                    {order.items.map((item, index) => (
-                                        <div className="order-product" key={index}>
-                                            <img  src={item.image} alt={item.name} className="order-product-image" />
+                                        <div className="order-card-body">
+                                            {order.items.map((item, index) => (
+                                                <div className="order-product" key={index}>
+                                                    <img  src={item.image} alt={item.name} className="order-product-image" />
 
-                                            <div className="order-product-info">
-                                                <h6>{item.name}</h6>
-                                                <p className="text-muted mb-1"> Số lượng: {item.quantity} </p>
-                                                <span>{formatPrice(item.price)}</span>
+                                                    <div className="order-product-info">
+                                                        <h6>{item.name}</h6>
+                                                        <p className="text-muted mb-1"> Số lượng: {item.quantity} </p>
+                                                        <span>{formatPrice(item.price)}</span>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        <div className="order-card-footer">
+                                            <div>
+                                                <span className="text-muted">Tổng tiền: </span>
+                                                <span className="order-total"> {formatPrice(order.total)} </span>
+                                            </div>
+
+                                            <div className="order-actions">
+                                                <button className="btn btn-outline-secondary btn-sm" onClick={() => setSelectedOrder(order)} > Xem chi tiết </button>
+
+                                                {order.status === "pending" && ( <button className="btn btn-outline-danger btn-sm" onClick={() => handleCancelOrder(order.id)} > Hủy đơn </button>)}
                                             </div>
                                         </div>
+                                    </div>
+                                );
+                            })
+                        ) : (
+                            <div className="orders-empty text-center py-5">
+                                <div className="orders-empty-icon">🛍️</div>
+                                <h5>Không có đơn hàng nào</h5>
+                                <p className="text-muted"> Bạn chưa có đơn hàng thuộc trạng thái này. </p>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Modal chi tiết đơn hàng */}
+                    {selectedOrder && (
+                        <div className="order-modal-overlay" onClick={() => setSelectedOrder(null)} >
+                            <div className="order-modal" onClick={(e) => e.stopPropagation()} >
+                                <div className="order-modal-header">
+                                    <h5 className="fw-bold mb-0">Chi tiết đơn hàng</h5>
+
+                                    <button className="order-modal-close" onClick={() => setSelectedOrder(null)} >
+                                        ×
+                                    </button>
+                                </div>
+
+                                <div className="order-modal-body">
+                                    <div className="mb-3">
+                                        <p className="mb-1">
+                                            <strong>Mã đơn:</strong> {selectedOrder.id}
+                                        </p>
+
+                                        <p className="mb-1">
+                                            <strong>Ngày đặt:</strong> {selectedOrder.date}
+                                        </p>
+
+                                        <p className="mb-0">
+                                            <strong>Trạng thái:</strong>{" "}
+                                            <span className={`order-status ${ statusInfo[selectedOrder.status].className }`} > {statusInfo[selectedOrder.status].label} </span>
+                                        </p>
+                                    </div>
+
+                                    <hr />
+
+                                    <h6 className="fw-bold mb-3">Sản phẩm</h6>
+
+                                    {selectedOrder.items.map((item, index) => (
+                                        <div className="order-detail-product" key={index}>
+                                            <img src={item.image} alt={item.name} />
+
+                                            <div className="flex-grow-1">
+                                                <p className="mb-1 fw-semibold">{item.name}</p>
+                                                <small className="text-muted">
+                                                    x{item.quantity}
+                                                </small>
+                                            </div>
+
+                                            <span>{formatPrice(item.price * item.quantity)}</span>
+                                        </div>
                                     ))}
-                                </div>
 
-                                <div className="order-card-footer">
-                                    <div>
-                                        <span className="text-muted">Tổng tiền: </span>
-                                        <span className="order-total"> {formatPrice(order.total)} </span>
-                                    </div>
+                                    <hr />
 
-                                    <div className="order-actions">
-                                        <button className="btn btn-outline-secondary btn-sm" onClick={() => setSelectedOrder(order)} > Xem chi tiết </button>
-
-                                        {order.status === "pending" && ( <button className="btn btn-outline-danger btn-sm" onClick={() => handleCancelOrder(order.id)} > Hủy đơn </button>)}
+                                    <div className="d-flex justify-content-between">
+                                        <span className="fw-bold">Tổng thanh toán</span>
+                                        <span className="order-total"> {formatPrice(selectedOrder.total)}  </span>
                                     </div>
                                 </div>
-                            </div>
-                        );
-                    })
-                ) : (
-                    <div className="orders-empty text-center py-5">
-                        <div className="orders-empty-icon">🛍️</div>
-                        <h5>Không có đơn hàng nào</h5>
-                        <p className="text-muted"> Bạn chưa có đơn hàng thuộc trạng thái này. </p>
-                    </div>
-                )}
-            </div>
 
-            {/* Modal chi tiết đơn hàng */}
-            {selectedOrder && (
-                <div className="order-modal-overlay" onClick={() => setSelectedOrder(null)} >
-                    <div className="order-modal" onClick={(e) => e.stopPropagation()} >
-                        <div className="order-modal-header">
-                            <h5 className="fw-bold mb-0">Chi tiết đơn hàng</h5>
+                                <div className="order-modal-footer"> {selectedOrder.status === "pending" && (  <button className="btn btn-outline-danger" onClick={() => handleCancelOrder(selectedOrder.id)} > Hủy đơn hàng </button>)}
 
-                            <button className="order-modal-close" onClick={() => setSelectedOrder(null)} >
-                                ×
-                            </button>
-                        </div>
-
-                        <div className="order-modal-body">
-                            <div className="mb-3">
-                                <p className="mb-1">
-                                    <strong>Mã đơn:</strong> {selectedOrder.id}
-                                </p>
-
-                                <p className="mb-1">
-                                    <strong>Ngày đặt:</strong> {selectedOrder.date}
-                                </p>
-
-                                <p className="mb-0">
-                                    <strong>Trạng thái:</strong>{" "}
-                                    <span className={`order-status ${ statusInfo[selectedOrder.status].className }`} > {statusInfo[selectedOrder.status].label} </span>
-                                </p>
-                            </div>
-
-                            <hr />
-
-                            <h6 className="fw-bold mb-3">Sản phẩm</h6>
-
-                            {selectedOrder.items.map((item, index) => (
-                                <div className="order-detail-product" key={index}>
-                                    <img src={item.image} alt={item.name} />
-
-                                    <div className="flex-grow-1">
-                                        <p className="mb-1 fw-semibold">{item.name}</p>
-                                        <small className="text-muted">
-                                            x{item.quantity}
-                                        </small>
-                                    </div>
-
-                                    <span>{formatPrice(item.price * item.quantity)}</span>
+                                    <button className="btn btn-secondary" onClick={() => setSelectedOrder(null)} > Đóng </button>
                                 </div>
-                            ))}
-
-                            <hr />
-
-                            <div className="d-flex justify-content-between">
-                                <span className="fw-bold">Tổng thanh toán</span>
-                                <span className="order-total"> {formatPrice(selectedOrder.total)}  </span>
                             </div>
                         </div>
-
-                        <div className="order-modal-footer"> {selectedOrder.status === "pending" && (  <button className="btn btn-outline-danger" onClick={() => handleCancelOrder(selectedOrder.id)} > Hủy đơn hàng </button>)}
-
-                            <button className="btn btn-secondary" onClick={() => setSelectedOrder(null)} > Đóng </button>
-                        </div>
-                    </div>
+                    )}
                 </div>
-            )}
+
+            </div>
         </div>
-    );
+
+
+            );
 }
 
 export default Orders;
