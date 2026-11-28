@@ -16,6 +16,7 @@ import AdminProduct from "../pages/admin/AdminProduct.tsx";
 import ForgotPassword from "../components/Auth/ForgotPassword";
 import Orders from "../pages/Orders/Orders.tsx";
 import Vouchers from "../pages/Vouchers/Vouchers.tsx";
+import  Addresses from "../pages/Addresses/Addresses.tsx"
 
 export const router = createBrowserRouter([
     {
@@ -52,6 +53,8 @@ export const router = createBrowserRouter([
             { path: "forgot-password", element: <ForgotPassword /> },
             { path:"/profile/orders", element:<Orders /> },
             { path: "/profile/vouchers", element: <Vouchers/>},
+            { path: "/profile/addresses", element: <Addresses />},
+
         ]
     },
     {
