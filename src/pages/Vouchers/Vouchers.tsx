@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Vouchers.css";
+import ProfileMenu from "../../components/Profile/ProfileMenu.tsx";
 
 const initialVouchers = [
     { id: 1, code: "HANDMADE10", title: "Giảm 10%", description: "Giảm 10% cho đơn hàng handmade", discount: "10%", minOrder: 100000, maxDiscount: 50000, expiry: "30/12/2026", status: "available", type: "percent" },
@@ -54,6 +55,11 @@ function Vouchers() {
     };
 
     return (
+        <div className="row g-4">
+            <div className="col-12 col-md-4 col-lg-3">
+                <ProfileMenu />
+            </div>
+            <div className="col-12 col-md-8 col-lg-9">
         <div className="voucher-page container py-4">
             <div className="voucher-header">
                 <h2>Voucher của tôi</h2>
@@ -108,6 +114,8 @@ function Vouchers() {
             </div>
 
             {filteredVouchers.length === 0 && <div className="voucher-empty"><p>Không có voucher nào.</p></div>}
+        </div>
+            </div>
         </div>
     );
 }
