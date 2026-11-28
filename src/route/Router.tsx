@@ -10,9 +10,9 @@ import Login from "../components/Auth/Login";
 import Register from "../components/Auth/Register";
 import LayoutAdmin from "./admin/LayoutAdmin.tsx";
 import DashboardAdmin from "../pages/admin/DashBoard.tsx";
-import AdminUser from "../pages/admin/AdminUser";
-import AdminOrder from "../pages/admin/AdminOrder.tsx";
-import AdminProduct from "../pages/admin/AdminProduct.tsx";
+import AdminUser from "../pages/admin/User/AdminUser";
+import AdminOrder from "../pages/admin/order/AdminOrder.tsx";
+import AdminProduct from "../pages/admin/Product/AdminProduct.tsx";
 
 export const router = createBrowserRouter([
     {
