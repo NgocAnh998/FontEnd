@@ -10,6 +10,16 @@ import Login from "../components/Auth/Login";
 import Register from "../components/Auth/Register";
 import LayoutAdmin from "./admin/LayoutAdmin.tsx";
 import DashboardAdmin from "../pages/admin/DashBoard.tsx";
+
+
+
+
+import ForgotPassword from "../components/Auth/ForgotPassword";
+import Orders from "../pages/Orders/Orders.tsx";
+import Vouchers from "../pages/Vouchers/Vouchers.tsx";
+import  Addresses from "../pages/Addresses/Addresses.tsx"
+import Messages from "../pages/Messages/Messages";
+
 import AdminUser from "../pages/admin/User/AdminUser";
 import AdminOrder from "../pages/admin/order/AdminOrder.tsx";
 import AdminProduct from "../pages/admin/Product/AdminProduct.tsx";
@@ -21,6 +31,7 @@ import AdminPromotion from "../pages/admin/promotion/AdminPromotion";
 import AdminReview from "../pages/admin/review/AdminReview";
 import AdminSupport from "../pages/admin/support/AdminSupport";
 import AdminCategory from "../pages/admin/category/AdminCategory";
+
 
 export const router = createBrowserRouter([
     {
@@ -54,6 +65,13 @@ export const router = createBrowserRouter([
                 element: <Login />
             },
             { path: "register", element: <Register /> },
+            { path: "forgot-password", element: <ForgotPassword /> },
+            { path:"/profile/orders", element:<Orders /> },
+            { path: "/profile/vouchers", element: <Vouchers/>},
+            { path: "/profile/addresses", element: <Addresses />},
+            { path: "/profile/messages", element: <Messages />},
+
+
         ]
     },
     {
