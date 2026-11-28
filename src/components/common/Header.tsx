@@ -1,6 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import type { RootState } from '../../store/Store';
+import { useAppSelector } from '../../store/hooks';
+import { selectWishlistCount } from '../../store/selectors';
 
 const accountLinks = [
     { to: '/profile', label: 'Hồ sơ cá nhân', icon: 'bi-person' },
@@ -11,9 +11,7 @@ const accountLinks = [
 ];
 
 function Header() {
-    const wishlist = useSelector(
-        (state: RootState) => state.wishlist.items
-    );
+    const wishlistCount = useAppSelector(selectWishlistCount);
 
     const linkClass = ({ isActive }: { isActive: boolean }) =>
         `nav-link px-3 ${isActive ? 'active fw-semibold' : ''}`;
@@ -57,7 +55,7 @@ function Header() {
                                 <i className="bi bi-heart me-1"></i>
                                 Yêu thích
                                 <span className="badge rounded-pill text-bg-danger ms-2">
-                                    {wishlist.length}
+                                    {wishlistCount}
                                 </span>
                             </NavLink>
                         </li>
